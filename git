@@ -1,0 +1,51 @@
+git
+
+lists all of the already committed files being tracked by your git repo.
+* git ls-tree --full-tree -r HEAD
+
+Add new repo to subdirectory
+git add . --all -f
+
+ 585  git add . --all -f
+  586  git status
+  587  git commit -a
+  588  git push origin master
+
+1013  git init
+ 1014  git add .
+ 1015  git commit -m "initial commmit for live10ec1"
+ 1016  git remote add origin git@bitbucket.org:vps/elemental_profiles.git
+ 1017  git push -u origin master
+ 1018  git remote add origin https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1019  git remote add https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1020  git remote add -m https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1021  git push -u origin master https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1022  git remote add master https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1023  git status
+ 1025  git push -u origin master
+ 1026  git remote set-url origin https://spalmer_turner@bitbucket.org/vps/elemental_profiles.git
+ 1027  git push -u origin master
+ 1028  git push -u origin
+ 1029  git push -u master
+ 1031  git status
+ 1032  git push origin master
+ 1033  git push --help
+ 1034  git fetch
+ 1035  git push -u origin master
+ 1036  git status
+ 1037  git add .
+ 1038  git status
+ 1039  git push origin
+ 1040  git pull origin
+ 1041  git pull origin master
+ 1043  git push -u origin master
+ 1045  git add live10ec1_profilesync.sh
+ 1046  git status
+ 1047  git push origin master
+ 1048  git sync
+ 1054  git status
+ 1055  git add .
+ 1056  git push origin master
+ 1057  git status
+ 1058  git commit -a
+ 1059  git push origin master

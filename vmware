@@ -1,0 +1,19 @@
+vmware
+
+
+df -h
+parted /dev/sda
+(parted)print
+(parted)resizepart 2 22G
+(parted)resizepart 5 22G
+quit
+
+pvresize /dev/sda5
+
+lvdisplay
+
+lvextend -l +100%FREE /dev/bbc-ubu14-tmpl-vg/root
+
+resize2fs /dev/bbc-ubu14-tmpl-vg/root
+
+df -h
