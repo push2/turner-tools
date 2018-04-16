@@ -1,0 +1,31 @@
+Find
+
+#
+
+find /opt/adobe/ams/Apache*/logs -type f -size +1000000000c -exec cp /dev/null '{}' ';' >/dev/null 2>&1
+
+ps afux - shows parent process in TREE
+
+find . -name '*access*gz' -mtime -7 -type f -exec zgrep 10_todays_scores.json '{}' ';'
+
+#Find all css files and change every reference to the color #FF0000 (red) to #00FF00 (green)
+find . -name "*.css" -exec sed -i -r 's/#(FF0000|F00)\b/#0F0/' {} \;
+
+find . -name '*access*gz' -mtime -7 -type f -exec zgrep 10_todays_scores.json'.* 403 ' '{}' ';'
+
+find . -type f -size +50000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+#Find all css file and grep html content id.
+find . -name "*.css" -exec grep -l "#content" {} \;
+
+# find files changed in the last 1 day
+find . -mtime -1 -type f
+
+# find CSS files, omitting results containing "CVS"
+find . \! -path "*CVS*" -type f -name "*.css"
+
+# find files newer than main.css in ~/src
+find ~/src -newer main.css
+
+# combine with xargs for more power than -exec
+find . -name \*.css -print0 | xargs -0 grep -nH foo

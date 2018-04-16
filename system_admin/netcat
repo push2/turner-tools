@@ -1,0 +1,10 @@
+netcat
+
+#
+
+Testing port connectivity :%nc -vt host port
+
+Port Scans
+* netcat -z -v domain.com 1-1000 (requires domain resolution = slow)
+* netcat -z -n -v 111.111.111.111 1-1000 (no resolution = faster)
+* netcat -z -n -v 111.111.111.111 1-1000 2>&1 | grep succeeded

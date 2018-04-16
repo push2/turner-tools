@@ -1,0 +1,21 @@
+grep
+
+#
+
+For elemental logs
+grep by date, multiple job directories….
+
+find . -type f -exec egrep -iH 'date' {} \;
+
+ egrep -v 'ERROR|FATAL' client.log.1
+
+Display N lines after match
+     grep -A <N> "string" FILENAME
+Display N lines before match
+     grep -B 2 "single WORD" demo_text
+Display N lines around match
+     grep -C 2 "Example" demo_text
+Display only the file names which matches the given pattern using grep -l
+     grep -l this demo_*
+
+Grep -w “hope” file.txt — Matches only the word hope, not words or fragments containing hope.

@@ -1,0 +1,45 @@
+curl
+
+#
+
+curl -s http://time.ng.cnn.com/internal/show/urn:ngtv-show:98533 | python -mjson.tool | less
+
+
+???
+curl -sS "http://{couch-host}/{database}/{id}?revs_info=true" | grep -o '"rev":"[^"]*","status":"available"' | sed 's/"rev":"\([^"]*\).*/\1/'
+
+curl -s "$couchDB/_all_docs?include_docs=true" | grep '"type":"\(Syndication\|Delivery\)Job"' | awk -F\\" '{print $4":"$14}'`
+
+grep -v -- ' - - ' access.log.1 | hpm | grep ^11/
+grep -v -- ' - - ' access.log.1 | hpm | grep ^11/Jun/2015:0
+
+curl -s "http://analyzer.turner.com/analyser/" | grep -o '<a href="[^<]*</a>' | sed 's|^<a href="||' | sed 's|"||' | sed 's|</a>||' | sed 's|.*>||' | sed 's|/||'
+
+
+for each in ouzo-pod{13..16}-l1-{1..8}.56m.vgtf.net cnn-ouzo-pod{25..28}-prod-l1-{1..8}.cop.vgtf.net; do curl -LsSf -HHost:www.cnn.com http://$each/ | grep http-equiv..last-modified;done
+
+curl -LsSf http://www.cnn.com
+
+for i in {1..100}; do curl -kisS 10.60.236.104 | grep ^HTTP; done
+
+curl -v -L -A "NokiaN97i/SymbianOS/9.1 Series60/3.0" money.cnn.com -o /dev/null
+
+curl -sI (S I(i)) |grep HTTP
+
+while true; do curl http://api.cnn.com/svc/mcs/intl-featured/ipad/v2-1/60 -o /dev/null -v; echo -e "\n\n"; sleep 1 ;done
+
+**this one’s great!!
+for i in cnn{8,s1}npuapp{1,2,5,6,7,8,9,10} ; do printf "$i " ; curl -sIL http://$i:8081 ; done | grep -i http
+
+
+| ~/mybin @ chilipalmer (scottpalmer)
+| => curl -I -K testfile1
+http response codes.
+_______________________________________________________________________________
+| ~/mybin @ chilipalmer (scottpalmer)
+| => cat testfile1
+url= "cnn.com/travel"
+url= "cnn.com/politics"
+
+
+curl -s "http://analyzer.turner.com/analyser/" | grep -o '<a href="[^<]*</a>' | sed 's|^<a href="||' | sed 's|"||' | sed 's|</a>||' | sed 's|.*>||' | sed 's|/||'

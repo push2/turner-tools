@@ -1,0 +1,8 @@
+bash
+
+#
+
+# print the j'th field of the i'th line
+awk -v i=5 -v j=3 'FNR == i {print $j}'
+
+watch --color -d -n 10 "curl -s http://cnn-i.akamaihd.net/hls/live/224534-b/cnndebates_1/index_Layer1.m3u8 | tail -n 30"
