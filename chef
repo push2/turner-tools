@@ -1,3 +1,9 @@
 Chef
 
 knife bootstrap cp3zeuscms3dev01.turner.com -x root -P @263cvb -N cp3zeuscms3dev01.turner.com -r'recipe[cp-base] recipe[zabbix-agent34] recipe[cp-base::vm] recipe[zeus::cms3] recipe[push-jobs]' -E zeus-cloud-dev
+
+
+#knife
+
+
+#chef-client
