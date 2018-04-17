@@ -41,5 +41,10 @@ _______________________________________________________________________________
 url= "cnn.com/travel"
 url= "cnn.com/politics"
 
-
+#
+#
 curl -s "http://analyzer.turner.com/analyser/" | grep -o '<a href="[^<]*</a>' | sed 's|^<a href="||' | sed 's|"||' | sed 's|</a>||' | sed 's|.*>||' | sed 's|/||'
+
+curl -m 1 -s http://irpt8app3.turner.com:8080/ir-version.xml
+
+netstat -tupan | grep ':21 ' | awk '{print $6}' | sort | uniq -c

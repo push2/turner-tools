@@ -1,0 +1,56 @@
+loops
+
+#
+#
+#
+
+
+for i in {1..4}; do for j in {cop}; do echo $i-$j; curl -s http://aswim-prod-$i.$j.vgtf.net:8081/| grep totalItems;done; done;
+
+
+for i in pga-web-prod-{1..6}.{56m,cop}.vgtf.net; do curl -IL http://$i/server-status ; done
+
+for i in irpt-{cache,app}-prod{1..8}.56m.vgtf.net; do knife node run_list add $i 'recipe[users-vgtf::ireport]'; done ; for i in irpt-{cache,app}-prod{1..8}.56m.vgtf.net; do knife ssh fqdn:$i 'sudo chef-client'; done
+
+Inode find
+for ii in $(find -maxdepth 1 -type d); do echo -e "${ii}\t$(find "${ii}" -type l -o -type d -o -type f | wc -l)" ; done | sort -n -k 2 | column -t
+
+
+that page was helpful: I get consistent results with -
+
+curl -w '%{time_total}\n' -s -I -X GET -H "Host: www.cnn.com" http://ouzo-pod14-l1-[1-8].56m.vgtf.net/cnnx/ | grep -E '^(HTTP|Location|[0-9])'
+looks like 2 and 5 are the problem in that case
+
+for NAME in nbaprem{2-9}.56m.vgtf.net; do ssh ${NAME} "sudo /etc/init.d/nbatksg restart"; done
+
+
+for i in {1,2,3,4,5,6,7,8,9} ; do echo hostname $i ; done
+hostname 1
+hostname 2
+hostname 3
+hostname 4
+hostname 5
+hostname 6
+hostname 7
+hostname 8
+hostname 9
+
+#
+#
+#
+for i in a b c do
+wget http://nike1$i.app.prod.diginsite.com:80/ done
+
+#
+#
+#
+for i in `cat hosts.cfg|grep -v ^#| grep address|awk '{print $2}'|head -20`; do rsh $i hostname ;
+done
+for i in `ls |grep db34`; do chmod 660 $i ; chown informix:informix $i ; done
+
+#
+#
+#
+[root@wrangler1a ~]# for i in 831 832 266 2A9 11A 120 147 159 200 59F 5BD >do
+> symdev -sid 1439 show $i|grep SCSI
+> done

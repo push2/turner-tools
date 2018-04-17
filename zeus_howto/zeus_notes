@@ -1,0 +1,93 @@
+Zeus
+web agents talk to a vip/proxy
+mercury and hydra poll the web agents
+all zeus components talk to cleversafe, including yeti
+yeti only polls the web machines.
+hydra pushes jobs to elemental - has database b/c needs to manage elementals.
+only hydra has access to the vide san /video2
+once elemental is done doing work, it hands off to hydra which pushes assets to cleversafe.
+movit moves the data to origin(bigdot) which is in COP/56M
+ ingest is different for everyworkflow. CMS files go to the video SAN /news/incomming/cnn. They select the anystream option and they can browse to their video@any10http1. MediaSource and Digital Nirvana for later…..
+ingest - NBA, their files get submitted to AWS S3, when the job gets submitted to zeus the S3 path is part of the information…then it goes into the standard encoding loop.
+*the entertainment brands use titan which goes through the aspera orchestrator flow.
+
+Zeus Agents
+Mercury - Is in charge of video/image/file ingestion and delivery operations. It supports a variety of schemes (such as http, https, ftp, and s3).
+Yeti - ffmpeg encoder
+Hydra - Interfaces Zeus to an Elemental VOD encoder
+
+The data in time machine is fed by toolkit
+
+Rebooting zeus database
+
+Order of reboots - Restart Zeus.
+DB
+Web machines
+Mercury
+Hydra
+cms3connectors - cms3connector formerly known as veas adapter - sits between zeus and cms3
+    cp3zeuscms3prod[01-02]
+Yeti if needed
+
+zeus + cms3 proxy servers - cp3proxyprod01-3. Hosts are listed/configured in /etc/nginx/sites-enabled
+
+If proxy jobs are not completing for editorial and you’re seeing them as completing (but NOT the primary jobs) it’s likely there is an issue with the cm3connectors because the zeus response is not getting to cms3 to continue the workflow. rebooting the cms3connector should resolve your issue.
+
+
+Just stuck in submitted state - Restarting “CMS connector?”
+    ?restarting both API machines
+    ?
+
+
+Common Zeus Errors
+* TypeError: 'NoneType' object is not subscriptable - likely issue with source (mediainfo,ffprobe)
+* Invalid data found when processing input
+
+On call issues
+Zeus database latency issues for CMS teams. The zeus worker is taking to long to do its work and the worker times out and zeus responds back with a 500 error
+
+Zeus questions
+* Why does playback work on any10 but fails via cleversafe?
+* Does a failed playback on cleversafe s3 mean the encode job will fail??
+* On hydra - how do you correlate the zeus id (zeus web prod) with information on hydra? And using that information how do  we correlate that with a specific encoder?
+
+
+
+Zeus Cloud instance -
+https://zeus.cp.vubble.it
+https://api.zeus.cp.vubble.it/admin/ - django admin page
+https://api.zeus.cp.vubble.it/health/ - health status - current
+
+
+Hosts:
+cp3zeusproddb
+cp3zeuscms3prod01
+cp3zeuscms3prod02
+cp3zeushydraprod01
+cp3zeushydraprod02
+cp3zeusmercuryprod01
+cp3zeusmercuryprod02
+
+
+zeusm1yeti16.turner.com
+zeusm1yeti15.turner.com
+zeusm1yeti14.turner.com
+zeusm1yeti13.turner.com
+zeusm1yeti11
+zeusm1yeti10
+zeusm1yeti7.turner.com
+zeusm1yeti6.turner.com
+zeusm1yeti5.turner.com
+zeusm1yeti3.turner.com
+zeusm1yeti4.turner.com
+zeusm1yeti2.turner.com
+zeusm1yeti1.turner.com
+
+Proxies
+cp3proxyprod01
+cp3proxyprod02
+cp3proxyprod03
+
+
+yeti - pga_drupal, turnernow_drupal and audio encodes
+hydra - cms3, extract captions

@@ -7,3 +7,21 @@ knife bootstrap cp3zeuscms3dev01.turner.com -x root -P @263cvb -N cp3zeuscms3dev
 
 
 #chef-client
+
+
+dpkg -P chef
+
+dpkg --configure -a
+
+
+#
+#
+knife bootstrap cp3zeusdev-hydra1 -x root -P @263cvb -N “cp3zeusdev-hyra1" -r 'recipe[cp-base]' 'recipe[zeus::frontend]' 'recipe[zeus::core_backend]' -E zeus-cloud-dev
+
+—Chef without a key — this has worked every etime (create a user than can sudo to root instead of using root)
+knife bootstrap 10.165.145.196 --sudo -x cnncagilitya -N "cp3octoshape10" -r 'recipe[apt] recipe[cp-base]'
+
+#knife command that works —
+knife bootstrap 10.165.222.14 --sudo -x cnncagilitya -P @gil1tY! -N “zeusm1yeti9" -r 'recipe[apt] recipe[cp-base] recipe[zeus::yeti]' -E zeus-qa
+knife bootstrap cp3zeusmercury04 —sudo  --ssh-user ahagi  -i ~/.ssh/abdul_bucket   -N "cp3zeusmercury04”  -r 'recipe[apt] recipe[cp-base] recipe[zeus::yeti]’  -E zeus-cloud-dev
+knife bootstrap 10.165.118.35  -x root -P @263cvb -N "cp3zeusyeti03" -r 'recipe[apt] recipe[cp-base] recipe[zeus::yeti]' -E zeus-cloud-dev

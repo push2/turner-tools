@@ -6,3 +6,108 @@ bash
 awk -v i=5 -v j=3 'FNR == i {print $j}'
 
 watch --color -d -n 10 "curl -s http://cnn-i.akamaihd.net/hls/live/224534-b/cnndebates_1/index_Layer1.m3u8 | tail -n 30"
+
+
+sed -i 's/gromit0b/gromit0b.app.qa/g' /tmp/main.cf
+df -H -t ext3| grep -vE "^Filesystem|tmpfs|cdrom" | awk '{print $4 " " $5}'
+df -H -t ext3 | grep -vE "^Filesystem|tmpfs|cdrom|${EXCLUDE_LIST}" | awk '{print $5 " " $6}'
+df -h | grep -E "data|archive"
+du -h . | grep [0-9]G
+du -h --max-depth=1
+
+
+#
+#
+cat file | awk '$3 == "C”’ grep’s “C” out of the third column
+ls -al job_1{4..6}{0..9}/*.log
+grep "2017-01-22 07:" job_1{4..6}{0..9}/*.log
+free -m | awk '{print $4}'| awk 'FNR == 2 {print}’
+
+#
+#Rename words within multiple files.
+sed -i -- 's/presser/presser2/g' *
+
+free -m | awk '{print $4}'| awk 'FNR == 2 {print}’
+
+# print the j'th field of the i'th line
+awk -v i=5 -v j=3 'FNR == i {print $j}'
+#
+#
+Sorted _ DU - add to bash_profile and run as sorted-du, substitute / for any filesystem.
+
+sorted-du () { paste -d '#' <( du -ax "$1" ) <( du -hax "$1" ) | sort -n -k1,7 | cut -d '#' -f 2; }
+
+mkdir -p /logs/OM/.status /logs/OM/stats && chown -R omadm:omadm /logs/OM && touch /var/log/om.log && chown -R omadm:omadm /opt/om /var/log/om.log && chmod -R o+r /opt/om && chmod -R g+w /opt/om
+
+
+/bin/ps -o user,pid,args -u pgautil
+
+
+  141  /usr/local/sbin/puppet-wrapper
+  142  export PATH="$PATH:/opt/oss/bin"
+  143  exec bash -o vi
+  144  export PS1='\h:\w \$ '
+  145  unalias -a
+  146  alias l="ls -alF"
+
+Listing Unix processes by percent of total memory usage
+ps -eo pmem,pcpu,rss,vsize,args | sort -k 1 -r | more
+
+for server in tnt{8,s1}c{1..4}; do echo $server; ssh root@server "/etc/init.d/apache-httpd-https-tnt.cache stop; pkill -KILL apache; rm -fr /cache/tnt/*; rm -fr /cache/tntdrama/*; /etc/init.d/apache-httpd-https-tnt.cache start; sleep 5; ps -ef | grep -i http"; done
+
+
+for i in asvideo asapps asbump aswiki; do sudo /etc/init.d/$i restart; done
+
+
+du -h . | grep [0-9]G
+du -h --max-depth=1
+
+for i in peachtreetv ideutil tbs tnt; do sudo /etc/init.d/$i restart; done
+
+
+for((i=1;i<255;i++)); do
+ping -c 1 -w 1 192.168.1.$i &>/dev/null && echo 192.168.1.$i
+done
+
+ cat /dev/urandom | hexdump -C | grep "ca fe”
+
+for v in {56m,cop}; do for i in {1..4}; do curl -I -H asrefresh:purge "aswim-cache-prod-$i.$v.vgtf.net/adultswimdynamic/asfix-svc/episodeSearch/getAllEpisodes?limit=15&offset=0&sortByD..."; done; done
+# print the j'th field of the i'th line
+awk -v i=5 -v j=3 'FNR == i {print $j}'
+
+#
+#
+alias duh="df -h; echo; du -hx --max-depth=1 /"
+
+
+#
+#
+
+Awk print column 5 if it’s greater than 90 - linux (awk sorta works)
+dsh "df -m | awk '\$5 > 90 {print }' " | grep -v /home/webs | grep -v /home/jail | grep -v /content_logs | grep -v /content_cores | grep -v /backups
+dsh uname -s |grep AIX |awk -F: '{print $1}' > /dsh.list
+sed -e 's/\\u\@\\h \\W\]\\\\\$ "/\\u\@\$\{ENVHOST\}:\\w\]\\\\$ "/' -i /etc/bashrc
+
+Shell tricks
+1755 gives drwxr-xr-t 2755 gives drwxr-sr-x 3755 gives drwxr-sr-t 4755 gives drwsr-xr-x 5755 gives drwsr-xr-t 6755 gives drwsr-sr-x 7755 gives drwsr-sr-t
+df-m|grepcaisson|awk'{print$1" --"$4 "--"$7}'
+If you only want the directory name (useful for shell scripts), you can use ls -l|awk '/^d/ {print $9}' du -xk [k-z]*|sort -nr |head
+du -xk [0-h]*|sort -nr|head
+Quickly access a numbered word list: $ echo file{1..5}
+file1 file2 file3 file4 file5
+df -Mm | awk '{print $1" " $2" " $3}'
+Xargs-t --The-tshowsverboselywhat’sgoingtooccur.
+
+Watch -- watch -n 10 'ls -al'
+-d --Tohighlightthedifferencebetweenthetwooutputs
+sty erase ^H
+Bash History tricks
+$ !! Run the previous command
+$ !997 Run command number 997 from history
+ls-CF
+$ !997 *doc Append *doc to command 997 from history
+ls -CF *doc
+$ !?CF? Run previous command line containing the CF string ls -CF *doc
+$ !ls Run the previous ls command
+ls -CF *doc
+$ !ls:s/CF/l Run previous ls command, replacing CF with l ls-l*doc

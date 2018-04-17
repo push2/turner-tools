@@ -29,3 +29,33 @@ find ~/src -newer main.css
 
 # combine with xargs for more power than -exec
 find . -name \*.css -print0 | xargs -0 grep -nH foo
+
+#
+#
+* Log delete - crontab - Andy barfoot -  find /var/log/social -type f -name '*.log.*' ! -name '*.log.1' -size +1000000000c -delete >/dev/null 2>&1
+
+* find /opt/bamboo_home/xml-data/build-dir/* -maxdepth 0 -atime +2 |xargs rm -rf . If this doesn’t clear the disk alert, run the command again with atime +1
+Or you can try:
+* find /opt/bamboo_home/logs -type f -name "bamboo-*.log.gz" -mtime +5 -exec rm -f '{}’ \
+
+#
+#
+find - df - du - sed/awk - chef - for loops - curl
+
+find /var/www/html1 -type f | wc -l
+
+find / -noleaf -type f -size +100000k -exec ls -lh {} \; | awk '{ print $5 ": " $9 }' |sort –n
+
+find . -type f -size +50000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+find . -type f -size +50000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 ,$6 ,$7 }'
+
+#bulk rename files
+find . -name '*presser*' -exec bash -c ' mv $0 ${0/presser/presser2}' {} \;
+
+
+find ./ -type f -exec ls -l {} \; | sort -nr +4 | head -20
+find files older than 30 days and move them - find /path/test-source/* -mtime +30 -exec mv {} /path/test-mv-to/ \;
+We currently are using this to delete files older than 60 days. "find installs/JS_* -maxdepth 0 - mtime +60 -type d -exec rm -rf {} \;"
+To negate a search criteria, place an exclamation point (!) before that criteria. The next example finds all the files that are not owned by the group root and are regular files, and then does an ls -l on each:
+$ find / ! -group root -type f -print 2> /dev/null | xargs ls -l

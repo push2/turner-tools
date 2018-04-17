@@ -17,3 +17,19 @@ lvextend -l +100%FREE /dev/bbc-ubu14-tmpl-vg/root
 resize2fs /dev/bbc-ubu14-tmpl-vg/root
 
 df -h
+
+
+#Notes copied from Evernote
+
+dmidecode -s system-manufacturer
+
+sudo dpkg -P chef
+
+For Zeus Dev Build out
+
+The tspass default password = pY!^f4nyD!*6
+
+root@cp3cnngonondai:~# grep Permit /etc/ssh/sshd_config
+#PermitRootLogin without-password
+PermitRootLogin yes
+PermitEmptyPasswords no

@@ -19,3 +19,8 @@ Display only the file names which matches the given pattern using grep -l
      grep -l this demo_*
 
 Grep -w “hope” file.txt — Matches only the word hope, not words or fragments containing hope.
+
+grep stream --color file
+% grep run[- ]time *.txt    {find 'run time' or 'run-time' in all txt files}
+
+egrep -B 2 'dropped:[1-9]'

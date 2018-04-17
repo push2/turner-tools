@@ -1,0 +1,20 @@
+| => cat eatin
+#!/usr/bin/expect
+#
+# Script to use ssh agent keys to log in to a specific server
+#  and setup custom prompt and execute commands
+#
+# Set the default timeout
+set timeout 1
+# Get the Users Data
+set server [ lindex $argv 0 ]
+set command [ lindex $argv 1 ]
+
+# Create the SSH connection to the server
+spawn ssh elemental@$server
+
+expect "*?assword:*"
+send "elemental\r"
+
+# Drops the user into the server
+interact

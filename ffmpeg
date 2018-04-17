@@ -1,0 +1,37 @@
+ffmpeg
+
+#Convert an m3u8 stream to an mp4
+ffmpeg -i in.m3u8 -acodec copy -bsf:a aac_adtstoasc -vcodec copy out.mp4
+
+Scale video to certain scale - not stretch
+ffmpeg -i input -vf "scale=1080:1080:force_original_aspect_ratio=decrease,pad=1080:1080:(ow-iw)/2:(oh-ih)/2" output
+
+
+ffmpeg -re -i file.mp4 -vcodecc copy -acodec copy -f mpegts ump
+
+(ffmpeg -re -i video.mp4 -vcodec copy -acodec copy -bsf:v h264_mp4toannexb -f mpegts udp:/127.0.0.1:5000)
+
+#Loop Images for Slates
+ffmpeg -loop 1 -i cnngo-slate-maintenance.png -vcodec libx264 -vf format=yuv420p -framerate 29.97 -s 1280x720 -t 11 cnngo-slate-maintenance.mp4
+
+Adult Swim —
+  861  ffmpeg -i myvideo 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
+  862  ffmpeg -i AS-countdown-loop.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
+  863  ffmpeg -i 10secBlack.mp4 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//
+
+#Trim the start time of a video
+ffmpeg -ss 79 -i BADASS_Latvian.mp4 -c copy testout.mp4
+#Trim the duration of a video
+ffmpeg -i testout.mp4 -c copy -t 182 testout2.mp4
+
+
+        3:37 PM
+        @TheProfessor sorry for the late response, here's how the ffmpeg command lines look like (2-pass encoding)
+
+[3:37 PM] Juan Villa: ffmpeg -y -i 0021500366-nop-por-verizon-go90-recap.nba.mov -threads 0 -g 36 -keyint_min 36 -pix_fmt yuv420p -filter:v yadif=3:0 -c:v libx264 -preset slow -pass 1 -b:v 8500k -minrate 8500k -maxrate 8500k -bufsize 4250k -profile:v high -level 4.0 -r 29.97 -s 1920x1080 -f rawvideo /dev/null
+
+[3:37 PM] Juan Villa: ffmpeg -y -i 0021500366-nop-por-verizon-go90-recap.nba.mov -threads 0 -pix_fmt yuv420p -r 29.97 -s 1920x1080 -filter:v yadif=3:0 -c:v libx264 -preset slow -pass 2 -b:v 8500k -minrate 8500k -maxrate 8500k -bufsize 4250k -profile:v high -level 4.0 -g 36 -keyint_min 36 -c:a aac -ac 2 -b:a 64k -ar 48000 -strict experimental  0021500366-nop-por-verizon-go90-recap.nba.m4v
+
+[3:49 PM] Juan Villa: @TheProfessor I figured out the weird blobs... I was using the wrong mode on the deinterlacer
+        I was using "send_field_nospatial" (3) rather than "send_frame" (1)
+        see https://ffmpeg.org/ffmpeg-filters.html#yadif-1
