@@ -1,0 +1,11 @@
+File for copy/pasting
+
+
+
+PlaybackUrl - https://$.cdnconfig("host")/hls/live/$.cdnconfig("stream_id")/$.descriptor("stream_type")/master.m3u8
+
+PlaybackBasePath - https://$.cdnconfig("host")/hls/live/$.cdnconfig("stream_id")/$.descriptor("stream_type")/
+
+PRIMARY_PUBLISH_URL - $.cdnconfig("primary_entry_point")/$.cdnconfig("stream_id")/$.descriptor('stream_type')
+
+ 

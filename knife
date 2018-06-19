@@ -1,8 +1,38 @@
 # knife cheat
 
+#My own - !!Add -VV for more verbose output!!
+knife client list
+knife cookbook list
+
+# Show node stauts, run list and recipe
+knife search cp3hostname01
+
+# Show all cookbook versions
+knife cookbook list
+
+# Show a cookbook version history
+knife cookbook show zeus
+
+# Show node run_list
+knife search -r cp3playertest01
+
+# Show all recipes
+knife recipe list
+
+# Show all zeus recipes
+knife recipe list zeus
+
+# Search options
+knife search "platform:ubuntu*" | grep -A 6 "cms3" | egrep -v 'Environment|FQDN|Roles|Tags'
+
+For Zeus Dev Build out
+knife bootstrap 10.165.120.237 -x root -P @263cvb -N “cp3certtest01" -r 'recipe[cp-base]' -E production
+
+
+
 ## Search Examples
 
-	knife search "name:ip*" 
+	knife search "name:ip*"
 	knife search "platform:ubuntu*"
 	knife search "platform:*" -a macaddress
 	knife search "platform:ubuntu*" -a uptime
@@ -57,14 +87,14 @@ How do I add a new recipe to every node?
 	knife exec -E "nodes.transform(“chef_environment:dev“) \
 		{|n| puts n.run_list.remove(“recipe[chef-client::upgrade]“); n.save }"
 
- 
+
 
 	knife exec -E "nodes.find(“role:web_server”) \
 		{|n| n.run_list.remove(“role[web_server]“); }"
 	knife exec -E "nodes.find(“name:test*”) \
 		{|n| n.chef_environment(“dev”);n.save }"
 
- 
+
 
 How do I download the recipes, environments, nodes and everything that is already uploaded to the chef server?
 
@@ -81,7 +111,7 @@ How do I shut down a old server in the amazon cloud?
 
 	knife ec2 server delete i-234a334 –purge
 
- 
+
 
 ###Nodes
 
@@ -94,10 +124,10 @@ How do I move nodes between environments?
 
 Remove a recipe from all nodes in an Environment
 
-	knife exec -E "nodes.transform(“chef_environment:dev”) \ 
+	knife exec -E "nodes.transform(“chef_environment:dev”) \
 		{|n| puts n.run_list.remove(“recipe[chef-client::upgrade]“); n.save }"
 
- 
+
 
 #Roles
 
@@ -116,7 +146,7 @@ Remove all nodes from a given role
 	knife exec -E "nodes.find(“role:web_server”) \
 		{|n| n.run_list.remove(“role[web_server]“); n.save}"
 
- 
+
 
 How do I add a role to an environment?
 

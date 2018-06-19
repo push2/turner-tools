@@ -1,3 +1,9 @@
 lsof
 
 #
+
+list 50 open files sorted by file size (largest first to smallest), excluding a particular user
+`lsof -u^dbrummitt |awk '{print $0|"sort  -rnk7 "}' |grep -v zero |head -50`
+
+list 50 open files sorted by file size (largest first to smallest), includes all users
+`lsof  |awk '{print $0|"sort  -rnk7 "}' |grep -v zero |head -50`

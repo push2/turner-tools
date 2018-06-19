@@ -42,6 +42,7 @@ Just stuck in submitted state - Restarting “CMS connector?”
 Common Zeus Errors
 * TypeError: 'NoneType' object is not subscriptable - likely issue with source (mediainfo,ffprobe)
 * Invalid data found when processing input
+*Exception: ('Elemental job errored', [{'message': 'Unable to open input file
 
 On call issues
 Zeus database latency issues for CMS teams. The zeus worker is taking to long to do its work and the worker times out and zeus responds back with a 500 error

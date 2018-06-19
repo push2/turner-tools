@@ -1,0 +1,297 @@
+{
+  "ChannelProperties": {
+    "Name": "{{ CHANNEL_NAME }}",
+    "Description": "{{ CHANNEL_DESCRIPTION }}",
+    "DefaultSlateURL": "http://vpcms.istreamplanet.com/slates/nbalp/LP_Slates_Unavailable-1280x720.jpg",
+    "ErrorSlateURL": "http://vpcms.istreamplanet.com/slates/nbalp/LP_Slates_Unavailable-1280x720.jpg",
+    "InsertSlateOnAdMarker": false,
+    "InsertSlateOnUPID": {
+      "SegmentUPID": "0",
+      "SegmentUPIDType": 0
+    },
+    "Tags": []
+  },
+  "Ingest": {
+    "Url": "{{ SOURCE }}",
+    "RedundantCVR": true,
+    "SourceStreams": [
+      {
+        "Stream": "//Stream[StreamTypeName='MPEG-2 Video' or StreamTypeName='H.264']",
+        "StreamIndex": 0,
+        "Type": "Video"
+      },
+      {
+        "Stream": "//Stream[StreamTypeName='MPEG-2 AAC ADTS' or StreamTypeName='AC-3 System-A' or StreamTypeName='AC-3 System-B' or StreamTypeName='MPEG-1 Audio' or StreamTypeName='MPEG-2 Audio']",
+        "StreamIndex": 0,
+        "Type": "Audio"
+      }
+    ],
+    "ProgramIndex": 0,
+    "IgnoreSurroundAudio": false,
+    "CEA708ClosedCaptions": true,
+    "SourcePTSPassthrough": false,
+    "SCTE35CommandTypes": [
+      "SpliceInsert",
+      "TimeSignal"
+    ],
+    "SCTE35SegmentTypes": [
+      "Ad",
+      "Chapter",
+      "Program"
+    ],
+    "IngestSCTE35": true,
+    "HonorSCTE35WebDeliveryFlag": false
+  },
+  "Encode": {
+    "CodecConfigs": [
+      {
+        "VideoCodec": "H.264",
+		"H264Level": 40,
+        "H264Profile": "HIGH",
+        "BufferDuration": 4,
+        "GOPMaxDuration": 2,
+        "NumReferenceFrames": 4,
+        "NumBFrames": 2,
+        "TargetUsage": "Balanced",
+        "Type": "Video"
+      },
+      {
+        "VideoCodec": "H.264",
+		"H264Level": 31,
+        "H264Profile": "MAIN",
+        "BufferDuration": 4,
+        "GOPMaxDuration": 2,
+        "NumReferenceFrames": 4,
+        "NumBFrames": 4,
+        "TargetUsage": "Balanced",
+        "Type": "Video"
+      },
+      {
+        "VideoCodec": "H.264",
+		"H264Level": 30,
+        "H264Profile": "BASELINE",
+        "BufferDuration": 4,
+        "GOPMaxDuration": 2,
+        "NumReferenceFrames": 4,
+        "NumBFrames": 0,
+        "TargetUsage": "Balanced",
+        "Type": "Video"
+      },
+      {
+        "AudioCodec": "AAC",
+        "HeAac": 0,
+        "MpegVersion": "MPEG4_AAC_AUDIO",
+        "AacHeaderType": "AAC_HEADER_ADTS",
+        "Type": "Audio"
+      }
+    ],
+    "ElementaryStreams": [
+      {
+        "Width": 1280,
+        "Height": 720,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 4500000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 1
+      },
+      {
+        "Width": 1280,
+        "Height": 720,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 3500000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 1
+      },
+      {
+        "Width": 960,
+        "Height": 540,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 2500000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 1
+      },
+      {
+        "Width": 848,
+        "Height": 480,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 1800000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 2
+      },
+      {
+        "Width": 640,
+        "Height": 360,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 1300000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 2
+      },
+      {
+        "Width": 640,
+        "Height": 360,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 900000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 2
+      },
+      {
+        "Width": 416,
+        "Height": 234,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 500000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 2
+      },
+      {
+        "Width": 416,
+        "Height": 234,
+        "MaxFrameRate": 30,
+        "ResizeMode": "STRETCH",
+        "Name": "",
+        "Type": "Video",
+        "BitRate": 250000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 2
+      },
+      {
+        "Channels": 2,
+        "SampleRate": 44100,
+        "Language": "eng",
+        "Name": "",
+        "Type": "Audio",
+        "BitRate": 128000,
+        "SourceStreamIndex": 0,
+        "CodecConfigIndex": 0
+      }
+    ]
+  },
+  "Package": {
+    "StreamPackages": [
+      {
+        "Parameters": {
+          "FormatVersion": 3,
+          "SegmentDuration": 6,
+          "SegmentsPerFolder": 2000,
+          "NielsenRating": false,
+          "NielsenBreakoutCode": 0,
+          "DisableMux": false,
+          "SplitDRM": false,
+          "KeyInfoAfterScte": false,
+          "BaseName": ""
+        },
+        "Format": "HLS",
+        "StreamCollection": [
+          {
+            "VideoStreamIndex": 5,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 7,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 6,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 4,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 3,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 2,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 1,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "VideoStreamIndex": 0,
+            "CreateIFramePlaylist": true
+          },
+          {
+            "Name": "English",
+            "AudioStreamIndex": 0
+          }
+        ],
+        "PartialPresentations": [],
+        "PublishingPointRedundancy": true
+      }
+    ]
+  },
+  "Publish": {
+    "PublishingPoints": [
+      {
+        "PublishPointId": "",
+        "Url": "{{ PRIMARY_PUBLISH_URL }}",
+        "OriginalUrl": "{{ PRIMARY_PUBLISH_URL }}/",
+        "HttpAuth": "None",
+        "UserName": "",
+        "Password": "",
+        "PlaybackBasePath": "{{ PRIMARY_PLAYBACK_BASE }}",
+        "StreamPackageIndex": 0,
+        "RedundantPublishing": false,
+        "CustomQueryString": "",
+        "StreamBaseName": "",
+        "AppendChannelNameToPath": false,
+        "UseAbsoluteUrlsInPlaylists": true,
+        "IncludeUTCTimeInPlaylists": false,
+        "MasterPlaylistName": "",
+        "SlidingWindowDuration": 180,
+        "TimelineMarkerFormats": [
+          "SCTE35",
+          "TurnerSimple"
+        ],
+        "MasterPlaylistPublishFrequency": 180
+      },
+      {
+        "PublishPointId": "",
+        "Url": "{{ SECONDARY_PUBLISH_URL }}",
+        "OriginalUrl": "{{ SECONDARY_PUBLISH_URL }}/",
+        "HttpAuth": "None",
+        "UserName": "",
+        "Password": "",
+        "PlaybackBasePath": "{{ SECONDARY_PLAYBACK_BASE }}",
+        "StreamPackageIndex": 0,
+        "RedundantPublishing": false,
+        "CustomQueryString": "",
+        "StreamBaseName": "",
+        "AppendChannelNameToPath": false,
+        "UseAbsoluteUrlsInPlaylists": true,
+        "IncludeUTCTimeInPlaylists": false,
+        "MasterPlaylistName": "",
+        "SlidingWindowDuration": 180,
+        "TimelineMarkerFormats": [
+          "SCTE35",
+          "TurnerSimple"
+        ],
+        "MasterPlaylistPublishFrequency": 60
+      }
+    ]
+  }
+}

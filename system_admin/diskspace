@@ -1,5 +1,11 @@
 disk space
 
+
+
+du -h --max-depth=1 / | grep '[0-9]G\>' | sort -hr
+du -h /tmp --max-depth=1 / | grep '[0-9]G\>' | sort -hr
+du -h --max-depth=1 /tmp | grep '[0-9]G\>' | sort -hr
+
 Old Disk Space Scripts
 
 #!/bin/sh

@@ -1,0 +1,14 @@
+#
+#
+# Scratch Space
+
+sudo dpkg --list 'linux-image*'|awk '{ if ($1=="ii") print $2}'|grep -v `uname -r`
+
+Removes white spaces before first line so i could grep out comments easier
+grep -o '[^\t ].*' /etc/zabbix/zabbix_agentd.conf | grep -v ^#
+
+
+sudo docker stop $(sudo docker ps -a | awk '{print $1}')
+
+
+about 1 hour into the meeting they discuss python variables/functions/keywords...
