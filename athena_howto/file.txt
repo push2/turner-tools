@@ -1,0 +1,5 @@
+
+
+
+What do those #CDNCONFIGERR#404 errors mean? And how do i fix them.
+    -Check that the group running the event has the right permissions. Be careful testing with the CP group.

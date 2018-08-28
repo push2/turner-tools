@@ -25,6 +25,72 @@ ffmpeg -ss 79 -i BADASS_Latvian.mp4 -c copy testout.mp4
 ffmpeg -i testout.mp4 -c copy -t 182 testout2.mp4
 
 
+DELICIAS NOTES :::
+
+Re)Installing FFMeg via Homebrew
+brew uninstall ffmpegthumbnailer ffmpeg
+brew prune
+brew install ffmpeg $(brew options ffmpeg | grep -vE '\s' | grep -- '--with-' | tr '\n' ' ')
+brew install ffmpegthumbnailer
+
+Lower video size
+ffmpeg -i input.mp4 -vcodec libx264 -crf 20 output.mp4
+
+Convert to HEVC (h.265) lossless
+ffmpeg -i INPUT.mkv -c:v libx265 -preset ultrafast -x265-params lossless=1 OUTPUT.mkv
+ffmpeg -i INPUT.mkv -c:v libx264 -preset ultrafast -x265-params lossless=1 OUTPUT.mkv
+
+#Create thumbnails
+Every sec
+ffmpeg -i myvideo.avi -vf fps=1 img%3d.jpg
+
+Every 60 sec
+ffmpeg -i myvideo.avi -vf fps=1/60 img%03d.jpg
+
+Every 10 min
+ffmpeg -i myvideo.avi -vf fps=1/600 img%03d.jpg
+
+Every iFrame
+ffmpeg -i input.flv -vf "select='eq(pict_type,PICT_TYPE_I)'" -vsync vfr thumb%04d.jpg
+
+Return meaningful frames from video (max 5 images)
+    ffmpeg -i input.mp4 -vf "select=gt(scene\,0.4)" -frames:v 5 -vsync vfr  out%02d.jpg
+#no limit
+    ffmpeg -i input.mp4 -vf "select=gt(scene\,0.4)" -vsync vfr  out%02d.jpg
+#pic 5 every 10 minutes
+    ffmpeg -ss 3 -i input.mp4 -vf "select=gt(scene\,0.4)" -frames:v 5 -vsync vfr -vf fps=fps=1/600 out%02d.jpg
+
+Convert mp3 to m4a for using as ringtone
+ffmpeg -i screaming.mp3 -c:a aac -b:a 192k screaming.m4a
+
+Convert Framerate With Re-Encoding
+ffmpeg -y -i seeing_noaudio.mp4 -vf "setpts=1.25*PTS" -r 24 seeing.mp4
+
+Convert Framerate Without Re-Encoding
+ffmpeg -y -i seeing_noaudio.mp4 -c copy -f h264 seeing_noaudio.h264
+ffmpeg -y -r 24 -i seeing_noaudio.h264 -c copy seeing.mp4
+
+Change/update meta data via FFmpeg
+You can do this with FFmpeg like so:
+ffmpeg -i input.avi -metadata key=value -codec copy output.avi
+# or with avconv(audio only)…
+avconv -i test.wav -c copy -metadata title='Test title' test_temp.mp3
+Example:
+$ du -h test.mov
+27M    test.mov
+$ ffprobe -loglevel quiet -show_format out.mov | grep title    # nothing found
+$ ffmpeg -loglevel quiet -i test.mov -codec copy -metadata title="My title" out.mov
+$ du -h out.mov
+27M    out.mov
+$ ffprobe -loglevel quiet -show_format out.mov | grep title
+TAG:title=My title
+See the documentation for -metadata and on stream copying for more information.
+Note also that not all formats allow setting arbitrary metadata, for, e.g., Quicktime doing -metadata title="my title" does what you'd expect, but -metadata foo=bux does nothing.
+
+
+
+
+
         3:37 PM
         @TheProfessor sorry for the late response, here's how the ffmpeg command lines look like (2-pass encoding)
 

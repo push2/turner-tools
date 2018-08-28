@@ -3,9 +3,32 @@ File for copy/pasting
 
 
 PlaybackUrl - https://$.cdnconfig("host")/hls/live/$.cdnconfig("stream_id")/$.descriptor("stream_type")/master.m3u8
+    https://pgalive.akamaized.net/hls/live/663403/pgalive_5/master.m3u8
 
 PlaybackBasePath - https://$.cdnconfig("host")/hls/live/$.cdnconfig("stream_id")/$.descriptor("stream_type")/
+    https://pgalive.akamaized.net/hls/live/663403/pgalive_5/
 
 PRIMARY_PUBLISH_URL - $.cdnconfig("primary_entry_point")/$.cdnconfig("stream_id")/$.descriptor('stream_type')
+    http://p-ep663403.i.akamaientrypoint.net/663403/pgalive_5
 
- 
+
+.cdnconfig("host") - cdnconfig - Playback Host - pgalive.akamaized.net
+.cdnconfig("primary_entry_point") - cdnconfig - Primary Entry Point - http://p-ep663398.i.akamaientrypoint.net
+.cdnconfig("stream_id") cdnconfig - Stream Id - 663398
+
+
+.descriptor('stream_type')
+.descriptor('cdn_config')
+.descriptor('')
+
+
+Options in Athena --
+Source - PGCACHAMPS2_5
+Cdn config - PGA Champs 5
+Stream Type - pgalive_5
+
+
+//turner.com/dfsbest/operations /video/atomshares_operations cifs user=tstudios-util,pass=utilpa55,uid=elemental,gid=elemental,noperm,directio 0 0
+
+
+Source override -- look at brlive

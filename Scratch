@@ -12,3 +12,24 @@ sudo docker stop $(sudo docker ps -a | awk '{print $1}')
 
 
 about 1 hour into the meeting they discuss python variables/functions/keywords...
+
+
+
+https://turnerstudios-vh.akamaihd.net/i/tso/big/townhall/2018/06/18/townhall_41031_20180621T190424_,low,med,high,ultra,.mp4.csmil/master.m3u8
+
+
+"keyframes": {
+    "process": "/video/thumbnails",
+    "input": "{{ source }}",
+    "output": "{{job_slug}}_{{job_id}}_keyframes_${index}.jpg",
+    "tags": ["keyframes", "thumbnail", "desktop"]
+},
+"thumb_livestories": {
+    "process": "/image/resize",
+    "input": "@keyframes",
+    "output": "{{job_slug}}.{{job_id}}_${index}_640x360.jpg",
+    "tags": ["thumb_livestories", "thumbnail", "desktop"],
+    "ignore_aspect": true,
+    "width": 640,
+    "height": 360
+},
